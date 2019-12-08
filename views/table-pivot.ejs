@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table Pivot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+        <% if (typeof results == 'object' && results) { %>
+        <table class="table my-3" id="pivot-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Full Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Item</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Total Price</th>
+                </tr>
+            <tbody>
+                <% for (i = 0; i < (results.length); i++) { %>
+                <tr>
+                    <td class="text-center"><%=results[i].Id%></th>
+                    <td><%=results[i].Fullname%></th>
+                    <td class="text-center"><%=results[i].Email%></td>
+                    <td class="text-center"><%=results[i].Item%></th>
+                    <td class="text-center"><%=results[i].Quantity%></td>
+                    <td class="text-center"><%=results[i].Total_price%></td>
+                <% } %>
+                </tr>
+            </tbody>
+          </table>
+          <% } %>
+
+          <% if (typeof pivot == 'object' && pivot) { %>
+          <table class="table my-3" id="pivot-table">
+              <thead class="thead-dark">
+                  <tr>
+                      <th>Full Name</th>
+                      <th class="text-center">Email</th>
+                      <th class="text-center">Barang1</th>
+                      <th class="text-center">Barang2</th>
+                      <th class="text-center">Barang3</th>
+                      <th class="text-center">Barang4</th>
+                      <th class="text-center">Barang5</th>
+                  </tr>
+              <tbody>
+                  <% for (i = 0; i < (pivot.length); i++) { %>
+                  <tr>
+                      <td><%=pivot[i].Fullname%></th>
+                      <td class="text-center"><%=pivot[i].Email%></td>
+                      <td class="text-center"><%=pivot[i].Barang1%></th>
+                      <td class="text-center"><%=pivot[i].Barang2%></td>
+                      <td class="text-center"><%=pivot[i].Barang3%></td>
+                      <td class="text-center"><%=pivot[i].Barang4%></td>
+                      <td class="text-center"><%=pivot[i].Barang5%></td>
+                  <% } %>
+                  </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-secondary" onclick="goBack()">Back</button>
+            <% } else { %>
+              <form action="/pivot" method="post">
+              <button class="btn btn-primary" type="submit">PIVOT</button>
+            </form>
+          <% } %>
+    </div>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
