@@ -18,7 +18,7 @@ Run the server.
   $ npm run start # Runs on http://localhost:5000
 ```
 
-## Home page [/]
+## Home page [http://localhost:5000]
 
 Go to browser page:
 
